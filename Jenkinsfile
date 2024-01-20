@@ -5,6 +5,12 @@ pipeline {
         }
     }
     stages {
+        stage('Initialize'){
+            steps {
+                def dockerHome = tool 'docker'
+                env.PATH = "${dockerHome}/bin:${env.PATH}"
+            }
+        }
         stage('Build docker image'){
             steps{
                 sh 'docker build -t mohamed99amine/devkhobzix .'
